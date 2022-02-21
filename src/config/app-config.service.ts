@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AppConfigService {
-  constructor(private readonly config: ConfigService) {}
+  constructor(protected readonly config: ConfigService) {}
 
   public get isDevelopment(): boolean {
     return this.config.get('NODE_ENV') === 'development';
