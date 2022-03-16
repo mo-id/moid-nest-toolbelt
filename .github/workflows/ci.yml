@@ -1,0 +1,37 @@
+# This workflow will do a clean install of node dependencies,
+# build the source code and run tests
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    name: Build, compile and test
+
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          # minimum version supported by our dependencies (Jest)
+          node-version: 14.15
+          registry-url: https://npm.pkg.github.com
+          scope: '@mo-id'
+
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - run: npm install
+      - run: npm run compile
+      - run: npm run build
+      - run: npm test
