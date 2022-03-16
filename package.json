@@ -26,8 +26,7 @@
   "peerDependencies": {
     "@nestjs/common": ">=8",
     "@nestjs/config": ">=1",
-    "@nestjs/core": ">=8",
-    "class-validator": ">=0.13"
+    "@nestjs/core": ">=8"
   },
   "husky": {
     "hooks": {
@@ -54,7 +53,6 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
     "@types/jest": "^27.4.1",
-    "class-validator": "^0.13.2",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "mongoose": "^6.2.6",
