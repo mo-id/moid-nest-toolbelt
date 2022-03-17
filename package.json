@@ -59,6 +59,8 @@
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "mongoose": "^6.2.6",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.5.5",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
