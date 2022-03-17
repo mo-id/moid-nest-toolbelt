@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    name: Build, compile and test
+    name: CI
 
     timeout-minutes: 10
     runs-on: ubuntu-latest
