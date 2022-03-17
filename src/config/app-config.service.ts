@@ -6,7 +6,7 @@ export class AppConfigService {
   constructor(protected readonly config: ConfigService) {}
 
   public get isDevelopment(): boolean {
-    return this.config.get('NODE_ENV  ') === 'development';
+    return this.config.get('NODE_ENV') === 'development';
   }
 
   public get isTest(): boolean {
