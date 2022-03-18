@@ -2,7 +2,7 @@
   "name": "@mo-id/nest-toolbelt",
   "repository": "git://github.com/mo-id/moid-nest-toolbelt.git",
   "author": "moid",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
