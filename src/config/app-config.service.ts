@@ -1,19 +1,19 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Injectable } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class AppConfigService {
   constructor(protected readonly config: ConfigService) {}
 
   public get isDevelopment(): boolean {
-    return this.config.get('NODE_ENV') === 'development';
+    return this.config.get("NODE_ENV") === "development";
   }
 
   public get isTest(): boolean {
-    return this.config.get('NODE_ENV') === 'test';
+    return this.config.get("NODE_ENV") === "test";
   }
 
   public get isProduction(): boolean {
-    return this.config.get('NODE_ENV') === 'production';
+    return this.config.get("NODE_ENV") === "production";
   }
 }
