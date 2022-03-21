@@ -1,8 +1,19 @@
-import { Injectable, ParseEnumPipe, ArgumentMetadata } from "@nestjs/common";
+import { Nullable } from "@mo-id/typescript-toolbelt";
+import {
+  Injectable,
+  ParseEnumPipe,
+  ArgumentMetadata,
+  PipeTransform,
+} from "@nestjs/common";
 
 @Injectable()
-export class ParseOptionalEnumPipe extends ParseEnumPipe {
-  transform(value: any, metadata: ArgumentMetadata) {
+export class ParseOptionalEnumPipe<EnumType = any> implements PipeTransform {
+  constructor(private enumType: EnumType) {}
+
+  async transform(
+    value: any,
+    metadata: ArgumentMetadata
+  ): Promise<Nullable<EnumType>> {
     if (value === undefined || value === null) {
       return Promise.resolve(null);
     }
@@ -11,6 +22,8 @@ export class ParseOptionalEnumPipe extends ParseEnumPipe {
       return Promise.resolve(null);
     }
 
-    return super.transform(value, metadata);
+    const pipe = new ParseEnumPipe(this.enumType);
+    const parsedValue = await pipe.transform(value, metadata);
+    return parsedValue;
   }
 }
