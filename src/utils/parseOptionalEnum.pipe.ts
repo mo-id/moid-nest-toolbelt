@@ -1,3 +1,4 @@
+import { Nullable } from "@mo-id/typescript-toolbelt";
 import {
   Injectable,
   ParseEnumPipe,
@@ -6,14 +7,13 @@ import {
 } from "@nestjs/common";
 
 @Injectable()
-export class ParseOptionalEnumPipe<T = any> implements PipeTransform<T> {
-  private enumType: T;
+export class ParseOptionalEnumPipe<EnumType = any> implements PipeTransform {
+  constructor(private enumType: EnumType) {}
 
-  constructor(enumType: T) {
-    this.enumType = enumType;
-  }
-
-  async transform(value: any, metadata: ArgumentMetadata) {
+  async transform(
+    value: any,
+    metadata: ArgumentMetadata
+  ): Promise<Nullable<EnumType>> {
     if (value === undefined || value === null) {
       return Promise.resolve(null);
     }
