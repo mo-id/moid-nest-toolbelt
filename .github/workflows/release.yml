@@ -34,7 +34,7 @@ jobs:
       - run: npm run compile
       - run: npm test
       - run: npm run build
-      - run: npm version ${{ github.event.release.tag_name }} --force
+      - run: npm version --force ${{ github.event.release.tag_name }}
       - run: npm publish --tag ${{ github.event.release.target_commitish }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
