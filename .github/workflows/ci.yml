@@ -31,9 +31,9 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
-      - run: npm install
+      - run: yarn install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: npm run compile
-      - run: npm run build
-      - run: npm test
+      - run: yarn compile
+      - run: yarn build
+      - run: yarn test
