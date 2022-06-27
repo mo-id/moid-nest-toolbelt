@@ -31,9 +31,8 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
-      - run: yarn install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: yarn cache clean
+      - run: yarn install --network-concurrency 1
       - run: yarn compile
       - run: yarn build
       - run: yarn test
